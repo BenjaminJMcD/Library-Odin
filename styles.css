@@ -1,1 +1,66 @@
 
+
+body {
+
+}
+
+header {
+    position:sticky;
+    top: 0px;
+    height: 150px;
+    align-items: center;
+    background-color: rgba(41, 41, 14, 0.9)
+    
+}
+
+.header {
+    display:flex;
+    justify-content: center;
+    margin:0;
+    height: 150px;
+    align-items:center;
+}
+
+#addBook {
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    bottom: 70px;
+    right: 70px;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-auto-rows: 300px;
+    gap: 90px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+#card {
+    height: 300px;
+    width: 300px;
+    border: 5px black solid;
+    border-radius: 20px;
+    box-shadow: 10px 10px gray;
+}
+
+footer {
+    position:fixed;
+    bottom: 0px;
+    height: 50px;
+    width: 100vw;
+    margin:0;
+    align-items: center;
+    background-color: rgba(41, 41, 14, 0.9)
+}
+
+.footer {
+    display:flex;
+    justify-content: center;
+    margin:0;
+    height: 50px;
+    align-items:center;
+}
+
