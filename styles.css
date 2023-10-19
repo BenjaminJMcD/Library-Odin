@@ -21,7 +21,7 @@ header {
     align-items:center;
 }
 
-#addBook {
+#openDialog {
     position: absolute;
     height: 50px;
     width: 200px;
