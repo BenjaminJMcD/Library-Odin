@@ -12,7 +12,7 @@
         <button id="openDialog">ADD NEW BOOK</button>
     </header>
     <dialog id="inputNew">
-        <form action="">
+        <form id="newBookForm" onsubmit = "return addBookToLibrary()">
             <h1>Title</h1>
             <input type="text" id="newTitle">
             <h1>Author</h1>
@@ -21,13 +21,13 @@
             <input type="number" id="newPages">
             <h1>Read / Not Read</h1>
             <input type="checkbox" id="newRead">
-            <button id="submitBook">Submit</button>
+            <button type="submit" id="submitBook">Submit</button>
             <button id="closeDialog">Close</button>
         </form>
     </dialog>
     <main>
-        <div class="cardGrid">
-            <div id="card">
+        <div id="cardGrid">
+            <div class="card">
                 <h3 class="title">The Fellowship Of The Ring</h3>
                 <h3 class="author">J.R. Tolkien</h3>
                 <h4 class="pages">444 pages</h4>
