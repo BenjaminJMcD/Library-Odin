@@ -35,6 +35,10 @@ let newPages = document.getElementById('newPages');
 let newRead = document.getElementById('newRead');
 let form = document.getElementById('newBookForm');
 
+form.addEventListener("submit", event => {
+    event.preventDefault();
+})
+
 function addBookToLibrary() {
 
     val1 = newTitle.value;
@@ -43,64 +47,61 @@ function addBookToLibrary() {
     val4 = newRead.value;
 
     newBook = new Book(val1, val2, val3, val4);
+    renderNewBook();
     myLibrary.push(newBook);
+    console.log(myLibrary);
     
     inputNew.close();
-    //form.reset();
-    renderAssayCards(val1, val2, val3, val4);
-
-    //return false;
+    form.reset();
+    
+    return myLibrary;
 }
 
-// let LOTR = new Book("The Fellowship Of The Ring", "J. R. Tolkien", 444, "Yes");
-
-// myLibrary.push(LOTR);
-
-// let first = myLibrary[0];
-
-// console.log(first.title);
-
-
+console.log(myLibrary)
 
 // CREATE NEW CARD WHEN BOOK IS ADDED
 
 let cardGrid = document.getElementById("cardGrid");
-// let title = document.getElementsByClassName('title');
-// let author = document.getElementsByClassName('author');
-// let pages = document.getElementsByClassName('pages');
-// let read = document.getElementsByClassName('read');
 
- function renderAssayCards (a, b, c, d) {
+ function renderNewBook () {
 
-         let newCard = document.createElement("div");
-         newCard.classList.add("card");
-         cardGrid.appendChild(newCard);
+        let newCard = document.createElement("div");
+        newCard.classList.add("card");
+        cardGrid.appendChild(newCard);
 
-         addTitle = document.createElement("h3");
-         addTitle.classList.add("title")
-         addTitle.textContent = a;
-         newCard.appendChild(addTitle);
+        let addTitle = document.createElement("h3");
+        addTitle.classList.add("title")
+        addTitle.textContent = newBook.title;
+        newCard.appendChild(addTitle);
 
-         addAuthor = document.createElement("h3");
-         addAuthor.classList.add("author");
-         addAuthor.textContent = b;
-         newCard.appendChild(addAuthor);
+        let addAuthor = document.createElement("h3");
+        addAuthor.classList.add("author");
+        addAuthor.textContent = newBook.author;
+        newCard.appendChild(addAuthor);
 
-         addPages = document.createElement("h4");
-         addPages.classList.add("pages");
-         addPages.textContent = c;
-         newCard.appendChild(addPages);
+        let addPages = document.createElement("h4");
+        addPages.classList.add("pages");
+        addPages.textContent = newBook.pages;
+        newCard.appendChild(addPages);
 
-         addRead = document.createElement("button");
-         addHead.classList.add("read");
-         addRead.textContent = d;
-         newCard.appendChild(addRead);
+        let addRead = document.createElement("button");
+        addRead.classList.add("read");
+        addRead.textContent = newBook.read;
+        newCard.appendChild(addRead);
+        
+        let addRemove = document.createElement("button");
+        addRemove.classList.add("remove");
+        addRemove.textContent = "Remove";
+        newCard.appendChild(addRemove);
+        // addRemove.addEventListener("click", () => {
+        // addRemove.parentNode.remove();
+        // })
  }
 
-// function doIt () {
-//     let cardGrid = document.getElementById("cardGrid");
-//     let newCard = document.createElement("div.card");
-//     cardGrid.appendChild(newCard);
-// }
+ // REMOVE CARD
 
-// doIt();
+
+
+
+
+
