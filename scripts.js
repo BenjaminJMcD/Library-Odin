@@ -27,6 +27,14 @@ closeDialog.addEventListener("click", () => {
     inputNew.close();
 })
 
+closeDialog.addEventListener("click", () => {
+    form.reset();
+})
+
+submitBook.addEventListener("click", () => {
+    addBookToLibrary();
+})
+
 // ADD BOOK TO ASSAY WITH MODAL DIALOG
 
 let newTitle = document.getElementById('newTitle');
@@ -41,15 +49,21 @@ form.addEventListener("submit", event => {
 
 function addBookToLibrary() {
 
-    val1 = newTitle.value;
-    val2 = newAuthor.value;
-    val3 = newPages.value;
-    val4 = newRead.value;
+    let val1 = newTitle.value;
+    let val2 = newAuthor.value;
+    let val3 = newPages.value;
+    let val4 = "";
+
+    if (newRead.checked == true) {
+        val4 = "Read"
+    }
+    else {
+        val4 = "Not Read"
+    }
 
     newBook = new Book(val1, val2, val3, val4);
-    renderNewBook();
     myLibrary.push(newBook);
-    console.log(myLibrary);
+    renderNewBook();
     
     inputNew.close();
     form.reset();
@@ -57,13 +71,15 @@ function addBookToLibrary() {
     return myLibrary;
 }
 
-console.log(myLibrary)
-
-// CREATE NEW CARD WHEN BOOK IS ADDED
+// RENDER myLibrary AS CARDS WHEN BOOK IS ADDED
 
 let cardGrid = document.getElementById("cardGrid");
 
  function renderNewBook () {
+
+    cardGrid.innerHTML = "";
+
+    for (i=0; i<myLibrary.length; i++) {
 
         let newCard = document.createElement("div");
         newCard.classList.add("card");
@@ -71,32 +87,34 @@ let cardGrid = document.getElementById("cardGrid");
 
         let addTitle = document.createElement("h3");
         addTitle.classList.add("title")
-        addTitle.textContent = newBook.title;
+        addTitle.textContent = myLibrary[i].title;
         newCard.appendChild(addTitle);
 
         let addAuthor = document.createElement("h3");
         addAuthor.classList.add("author");
-        addAuthor.textContent = newBook.author;
+        addAuthor.textContent = myLibrary[i].author;
         newCard.appendChild(addAuthor);
 
         let addPages = document.createElement("h4");
         addPages.classList.add("pages");
-        addPages.textContent = newBook.pages;
+        addPages.textContent = myLibrary[i].pages;
         newCard.appendChild(addPages);
 
         let addRead = document.createElement("button");
         addRead.classList.add("read");
-        addRead.textContent = newBook.read;
+        addRead.textContent = myLibrary[i].read;
         newCard.appendChild(addRead);
         
         let addRemove = document.createElement("button");
         addRemove.classList.add("remove");
         addRemove.textContent = "Remove";
         newCard.appendChild(addRemove);
-        // addRemove.addEventListener("click", () => {
-        // addRemove.parentNode.remove();
-        // })
+    }
  }
+
+ // TOGGLE READ / NOT READ
+
+
 
  // REMOVE CARD
 
