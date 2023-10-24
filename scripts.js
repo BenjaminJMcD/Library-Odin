@@ -12,16 +12,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages + " pages";
     this.read = read;
-    // this.toggleRead = function (read) {
-    //     if (read == true) {
-    //         this.read = "Read"
-    //     }
-    //     if (read == false) {
-    //         this.read = "Not Read"
-    //     }
-    // }
 };
-
 
 // MODAL DIALOG POPUP FOR BOOK ENTRY
 
@@ -121,6 +112,7 @@ function createBook(item) {
     }
     addRead.textContent = item.read;
     newCard.appendChild(addRead);
+    addRead.onclick=toggleStatus;
 
     let addRemove = document.createElement("button");
     addRemove.classList.add("remove");
@@ -142,11 +134,27 @@ function renderNewBook () {
 
  // REMOVE CARD
 
- const removeBook = (e) => {
+const removeBook = (e) => {
     const index = e.target.parentNode.getAttribute("counter");
     
     myLibrary.splice(index, 1);
 
     renderNewBook();
+}
 
+// TOGGLE READ STATUS
+
+const toggleStatus = (e) => {
+    const index = e.target.parentNode.getAttribute("counter");
+
+    let changeReadBook = myLibrary[index];
+
+    if (changeReadBook.read == "Read") {
+        changeReadBook.read = "Not Read"
     }
+    else if (changeReadBook.read == "Not Read") {
+        changeReadBook.read = "Read"
+    }
+
+    renderNewBook();
+}
