@@ -44,7 +44,6 @@ submitBook.addEventListener("click", () => {
  let newPages = document.getElementById('newPages');
  let newRead = document.getElementById('newRead');
 
-
 form.addEventListener("submit", event => {
     event.preventDefault();
 })

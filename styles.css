@@ -1,16 +1,27 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Lato&family=Montserrat:wght@300&display=swap');
 
 body {
+    font-family: 'Kaisei Opti', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(208, 201, 201);
 
+}
+
+@media only screen and (max-width: 1000px) {
+    .header {
+        font-size: 28px;
+    }
 }
 
 header {
     position:sticky;
     top: 0px;
     height: 150px;
+    width: 100vw;
     align-items: center;
-    background-color: rgba(41, 41, 14, 0.9)
-    
+    background-color: rgba(41, 41, 14, 0.9);
+    color: rgb(208,201,201);
 }
 
 .header {
@@ -23,15 +34,60 @@ header {
 
 #openDialog {
     position: absolute;
-    height: 50px;
-    width: 200px;
+    height: 40px;
+    width: 175px;
     bottom: 70px;
-    right: 70px;
+    right: 20px;
+    top:13px;
+    background-color: rgb(208, 201, 201);
+    border-radius: 10px;
+    font-size: large;
+}
+
+#openDialog:active {
+    background-color:white;
+}
+
+#inputNew {
+    width: 300px;
+}
+
+.textBox {
+    width: 292px;
+    height: 30px;
+    font-size: 20px;
+}
+
+#inputNew h2 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.readModal {
+    display: flex;
+}
+
+.readModal input {
+    width: 18px;
+    margin-right: 10px;
+}
+
+.buttonsModal {
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+}
+
+.buttonsModal button {
+    height: 35px;
+    width: 85px;
+    border-radius: 8px;
+    font-size: 18px;
 }
 
 #cardGrid {
     display: grid;
-    grid-template-columns: 350px 350px 350px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
     grid-auto-rows: 200px;
     column-gap: 70px;
     margin-top: 40px;
@@ -47,6 +103,7 @@ header {
     display:grid;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 50px 50px 50px;
+    background: linear-gradient(340deg, rgba(41,41,14,1) 0%, rgba(186,162,126,1) 65%);
 }
 
 .title {
@@ -74,7 +131,8 @@ header {
     align-self: center;
     margin:0;
     height: 50px;
-    background-color: green;
+    background-color: rgb(73, 180, 37);
+    font-size: 20px;
 }
 
 .notRead {
@@ -82,11 +140,14 @@ header {
     align-self: center;
     margin:0;
     height: 50px;
-    background-color: red;
+    background-color: rgb(184, 196, 206);
+    font-size: 14px;
 }
 
 .remove {
     grid-area: 3 / 3 / 4 / 4;
+    background-color: rgb(184, 196, 206);
+    font-size: 14px;
 }
 
 footer {
@@ -105,5 +166,11 @@ footer {
     margin:0;
     height: 50px;
     align-items:center;
+    color: rgb(208,201,201);
+    font-size: large;
+}
+
+.footer a {
+    color: rgb(208,201,201);
 }
 
