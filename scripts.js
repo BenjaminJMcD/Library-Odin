@@ -7,11 +7,14 @@ let myLibrary = [];
 
 let form = document.getElementById('newBookForm');
 
-function Book(title, author, pages, read) {
+class Book {
+    constructor(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages + " pages";
     this.read = read;
+    }
+    //METHODS. GET TEXT VALUES. SET READ/NOTREAD. 
 };
 
 // MODAL DIALOG POPUP FOR BOOK ENTRY
@@ -131,7 +134,7 @@ function renderNewBook () {
     }
  }
 
- // REMOVE CARD
+ // REMOVE CARD - REMOVE BOOK FROM ASSAY. RENDER ALL
 
 const removeBook = (e) => {
     const index = e.target.parentNode.getAttribute("counter");
@@ -141,7 +144,7 @@ const removeBook = (e) => {
     renderNewBook();
 }
 
-// TOGGLE READ STATUS
+// TOGGLE READ STATUS - CHANGE READ STATUS IN ASSAY. RENDER ALL
 
 const toggleStatus = (e) => {
     const index = e.target.parentNode.getAttribute("counter");

@@ -42,10 +42,12 @@ header {
     background-color: rgb(208, 201, 201);
     border-radius: 10px;
     font-size: large;
+    color:black;
 }
 
 #openDialog:active {
     background-color:white;
+    color: black;
 }
 
 #inputNew {
@@ -53,7 +55,7 @@ header {
 }
 
 .textBox {
-    width: 292px;
+    width: 95%;
     height: 30px;
     font-size: 20px;
 }
@@ -83,6 +85,7 @@ header {
     width: 85px;
     border-radius: 8px;
     font-size: 18px;
+    color: black;
 }
 
 #cardGrid {
@@ -133,6 +136,7 @@ header {
     height: 50px;
     background-color: rgb(73, 180, 37);
     font-size: 20px;
+    color: black;
 }
 
 .notRead {
@@ -142,12 +146,14 @@ header {
     height: 50px;
     background-color: rgb(184, 196, 206);
     font-size: 14px;
+    color: black;
 }
 
 .remove {
     grid-area: 3 / 3 / 4 / 4;
     background-color: rgb(184, 196, 206);
     font-size: 14px;
+    color: black;
 }
 
 footer {
