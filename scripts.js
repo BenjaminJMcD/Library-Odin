@@ -3,19 +3,38 @@
 
 let myLibrary = [];
 
-// BOOK CONSTRUCTOR
+// BOOK CLASS CONSTRUCTOR
 
-let form = document.getElementById('newBookForm');
+let newTitle = document.getElementById('newTitle');
+let newAuthor = document.getElementById('newAuthor');
+let newPages = document.getElementById('newPages');
+let newRead = document.getElementById('newRead');
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages + " pages";
-    this.read = read;
+class Book {
+    constructor() {
+        this.title = newTitle.value;
+        this.author = newAuthor.value;
+        this.pages = newPages.value + " pages";
+        this.read = newRead.checked;
+    }
+    
+    get read() {
+        return this._read;
+    }
+    
+    set read(value) {
+        if (value) {
+            this._read = "Read"
+        }
+        else if (!value) {
+            this._read = "Not Read"
+        }
+    }
 };
 
 // MODAL DIALOG POPUP FOR BOOK ENTRY
 
+let form = document.getElementById('newBookForm');
 let inputNew = document.getElementById('inputNew');
 let openDialog = document.getElementById('openDialog');
 let submitBook = document.getElementById('submitBook');
@@ -37,34 +56,15 @@ submitBook.addEventListener("click", () => {
     addBookToLibrary();
 })
 
-// ADD BOOK TO ASSAY WITH MODAL DIALOG
-
- let newTitle = document.getElementById('newTitle');
- let newAuthor = document.getElementById('newAuthor');
- let newPages = document.getElementById('newPages');
- let newRead = document.getElementById('newRead');
+// ADD NEW BOOK OBJECT TO ASSAY
 
 form.addEventListener("submit", event => {
     event.preventDefault();
 })
 
-let newBook
-
 function addBookToLibrary() {
 
-    val1 = newTitle.value;
-    val2 = newAuthor.value;
-    val3 = newPages.value;
-    val4 = newRead.checked;
-
-    if (val4 == true) {
-        val4 = "Read"
-    }
-    else if (val4 == false) {
-        val4 = "Not Read"
-    }
-
-    newBook = new Book(val1, val2, val3, val4);
+    newBook = new Book();
 
     myLibrary.push(newBook);
     
@@ -72,6 +72,8 @@ function addBookToLibrary() {
     
     inputNew.close();
     form.reset();
+
+    console.log(myLibrary)
     
     return myLibrary;
 }
@@ -128,10 +130,11 @@ function renderNewBook () {
     for (i=0; i<myLibrary.length; i++) {
 
         createBook(myLibrary[i])
+        console.log(myLibrary[i].read)
     }
  }
 
- // REMOVE CARD
+ // REMOVE CARD - REMOVE BOOK FROM ASSAY. RENDER ALL
 
 const removeBook = (e) => {
     const index = e.target.parentNode.getAttribute("counter");
@@ -141,18 +144,18 @@ const removeBook = (e) => {
     renderNewBook();
 }
 
-// TOGGLE READ STATUS
+// TOGGLE READ STATUS - CHANGE READ STATUS IN ASSAY. RENDER ALL
 
 const toggleStatus = (e) => {
     const index = e.target.parentNode.getAttribute("counter");
 
     let changeReadBook = myLibrary[index];
 
-    if (changeReadBook.read == "Read") {
-        changeReadBook.read = "Not Read"
+    if (changeReadBook._read == "Read") {
+        changeReadBook._read = "Not Read"
     }
-    else if (changeReadBook.read == "Not Read") {
-        changeReadBook.read = "Read"
+    else if (changeReadBook._read == "Not Read") {
+        changeReadBook._read = "Read"
     }
 
     renderNewBook();
