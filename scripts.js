@@ -72,8 +72,6 @@ function addBookToLibrary() {
     
     inputNew.close();
     form.reset();
-
-    console.log(myLibrary)
     
     return myLibrary;
 }
