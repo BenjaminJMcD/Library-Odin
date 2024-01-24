@@ -38,7 +38,7 @@ let form = document.getElementById('newBookForm');
 let inputNew = document.getElementById('inputNew');
 let openDialog = document.getElementById('openDialog');
 let submitBook = document.getElementById('submitBook');
-let closeDialog = document.getElementById('closeDialog');
+let closeDialog = document.getElementById('closeDialog')
 
 openDialog.addEventListener("click", () => {
     inputNew.showModal();
@@ -51,6 +51,11 @@ closeDialog.addEventListener("click", () => {
 closeDialog.addEventListener("click", () => {
     form.reset();
 })
+
+// FORM VALIDATION + SUBMIT
+
+const titleError = document.getElementById("titleError");
+const authorError = document.getElementById("authorError");
 
 submitBook.addEventListener("click", () => {
 
@@ -81,14 +86,11 @@ submitBook.addEventListener("click", () => {
     }
 })
 
-// ADD NEW BOOK OBJECT TO ASSAY
-
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 })
 
-
-
+// ADD NEW BOOK OBJECT TO ASSAY
 
 function addBookToLibrary() {
 
@@ -149,15 +151,40 @@ function createBook(item) {
     addRemove.onclick=removeBook;
 }
 
-const card = document.createElement("div.card")
+function renderNewBook () {
+
+    cardGrid.innerHTML = "";
+
+    for (i=0; i<myLibrary.length; i++) {
 
         createBook(myLibrary[i])
+        console.log(myLibrary[i].read)
     }
  }
 
  // REMOVE CARD - REMOVE BOOK FROM ASSAY. RENDER ALL
 
-const removeBook = (e) => {
+ const removeBook = (e) => {
     const index = e.target.parentNode.getAttribute("counter");
     
+    myLibrary.splice(index, 1);
+
+    renderNewBook();
+}
+
+// TOGGLE READ STATUS - CHANGE READ STATUS IN ASSAY. RENDER ALL
+
+const toggleStatus = (e) => {
+    const index = e.target.parentNode.getAttribute("counter");
+
+    let changeReadBook = myLibrary[index];
+
+    if (changeReadBook._read == "Read") {
+        changeReadBook._read = "Not Read"
+    }
+    else if (changeReadBook._read == "Not Read") {
+        changeReadBook._read = "Read"
+    }
+
+    renderNewBook();
 }
