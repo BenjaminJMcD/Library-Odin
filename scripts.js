@@ -149,11 +149,7 @@ function createBook(item) {
     addRemove.onclick=removeBook;
 }
 
-function renderNewBook () {
-
-    cardGrid.innerHTML = "";
-
-    for (i=0; i<myLibrary.length; i++) {
+const card = document.createElement("div.card")
 
         createBook(myLibrary[i])
     }
@@ -164,24 +160,4 @@ function renderNewBook () {
 const removeBook = (e) => {
     const index = e.target.parentNode.getAttribute("counter");
     
-    myLibrary.splice(index, 1);
-
-    renderNewBook();
-}
-
-// TOGGLE READ STATUS - CHANGE READ STATUS IN ASSAY. RENDER ALL
-
-const toggleStatus = (e) => {
-    const index = e.target.parentNode.getAttribute("counter");
-
-    let changeReadBook = myLibrary[index];
-
-    if (changeReadBook._read == "Read") {
-        changeReadBook._read = "Not Read"
-    }
-    else if (changeReadBook._read == "Not Read") {
-        changeReadBook._read = "Read"
-    }
-
-    renderNewBook();
 }
