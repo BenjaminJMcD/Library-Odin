@@ -53,14 +53,42 @@ closeDialog.addEventListener("click", () => {
 })
 
 submitBook.addEventListener("click", () => {
-    addBookToLibrary();
+
+    if (newTitle.validity.valid && newAuthor.validity.valid) {
+        newTitle.classList.remove("error");
+        newAuthor.classList.remove("error");
+        titleError.innerText = "";
+        authorError.innerText = "";
+        addBookToLibrary();
+    }
+    else if (!newTitle.validity.valid && !newAuthor.validity.valid) {
+        titleError.innerText = "Title Required";
+        newTitle.classList.add("error");
+        authorError.innerText = "Author Required";
+        newAuthor.classList.add("error");
+    }
+    else if (!newTitle.validity.valid) {
+        newAuthor.classList.remove("error");
+        authorError.innerText = "";
+        titleError.innerText="Title Required";
+        newTitle.classList.add("error");
+    }
+    else if (!newAuthor.validity.valid) {
+        newTitle.classList.remove("error");
+        titleError.innerText = "";
+        authorError.innerText="Author Required"
+        newAuthor.classList.add("error");
+    }
 })
 
 // ADD NEW BOOK OBJECT TO ASSAY
 
-form.addEventListener("submit", event => {
+form.addEventListener("submit", (event) => {
     event.preventDefault();
 })
+
+
+
 
 function addBookToLibrary() {
 
@@ -128,7 +156,6 @@ function renderNewBook () {
     for (i=0; i<myLibrary.length; i++) {
 
         createBook(myLibrary[i])
-        console.log(myLibrary[i].read)
     }
  }
 

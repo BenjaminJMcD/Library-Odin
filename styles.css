@@ -54,6 +54,10 @@ header {
     width: 300px;
 }
 
+.error {
+    border-color: red;
+}
+
 .textBox {
     width: 95%;
     height: 30px;
